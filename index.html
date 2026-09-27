@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speakeasy Barbers | Plymouth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Raleway:wght@300;500;700&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; background: #1a1410; color: #e8dcc8; overflow-x: hidden; }
+
+        /* Hero: vintage ornate */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center;
+            background: linear-gradient(rgba(26,20,16,.85),rgba(26,20,16,.92)), url('https://images.unsplash.com/photo-1593702288056-2a9d1c8a3e3b?w=1200&q=80') center/cover;
+            padding: 2rem; position: relative;
+        }
+        .hero-ornament { font-size: 2.5rem; color: #c9a84c; letter-spacing: 12px; margin-bottom: 1rem; }
+        .hero-tag {
+            font-family: 'Raleway', sans-serif; font-weight: 300; letter-spacing: 6px; text-transform: uppercase;
+            font-size: 0.8rem; color: #c9a84c; margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif; font-size: 5rem; color: #e8dcc8;
+            line-height: 1.1; margin-bottom: 0.5rem;
+        }
+        .hero h1 .amp { font-family: 'Playfair Display', serif; font-style: italic; color: #c9a84c; }
+        .hero h1 .gold { color: #c9a84c; }
+        .hero-sub {
+            font-weight: 300; font-size: 1.1rem; color: #b5a58a; letter-spacing: 2px;
+            margin: 1rem 0 2rem; max-width: 500px;
+        }
+        .hero-divider { width: 120px; height: 2px; background: #c9a84c; margin: 1rem auto; }
+        .hero-address { font-size: 0.9rem; color: #8a7a6a; letter-spacing: 2px; }
+
+        /* Vintage button */
+        .btn-vintage {
+            display: inline-block; padding: 1rem 3rem; border: 2px solid #c9a84c; color: #c9a84c;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;
+            font-size: 0.85rem; transition: all .3s; background: transparent;
+        }
+        .btn-vintage:hover { background: #c9a84c; color: #1a1410; }
+
+        /* Story section: two-column serif */
+        .story { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: #201914; }
+        .story-text { display: flex; flex-direction: column; justify-content: center; }
+        .story-text .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: #c9a84c; margin-bottom: 1rem; }
+        .story-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #e8dcc8; line-height: 1.2; }
+        .story-text h2 .gold { color: #c9a84c; }
+        .story-text p { color: #b5a58a; line-height: 1.8; margin-top: 1.5rem; font-weight: 300; }
+        .story-img img { width: 100%; height: 500px; object-fit: cover; border: 4px solid #2a1f18; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+
+        /* Prices: vintage menu board */
+        .prices { padding: 5rem 4rem; background: #1a1410; text-align: center; }
+        .prices h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #e8dcc8; margin-bottom: 0.5rem; }
+        .prices h2 span { color: #c9a84c; }
+        .prices-sub { color: #8a7a6a; letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 3rem; }
+        .menu-board {
+            max-width: 600px; margin: 0 auto; border: 2px solid #2a1f18; padding: 3rem;
+            background: #201914; position: relative;
+        }
+        .menu-board::before, .menu-board::after {
+            content: '✦'; position: absolute; color: #c9a84c; font-size: 1.2rem; opacity: 0.5;
+        }
+        .menu-board::before { top: 10px; left: 15px; }
+        .menu-board::after { bottom: 10px; right: 15px; }
+        .menu-item { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px dashed #2a1f18; }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item .name { font-family: 'Raleway', sans-serif; font-weight: 500; color: #e8dcc8; letter-spacing: 1px; }
+        .menu-item .price { color: #c9a84c; font-weight: 700; font-family: 'Playfair Display', serif; }
+
+        /* Barbers: gold-framed */
+        .team { padding: 5rem 4rem; background: #201914; text-align: center; }
+        .team h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #e8dcc8; margin-bottom: 3rem; }
+        .team h2 span { color: #c9a84c; }
+        .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+        .team-card { background: #1a1410; padding: 2rem; border: 1px solid #2a1f18; transition: all .3s; }
+        .team-card:hover { border-color: #c9a84c; }
+        .team-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #2a1f18; }
+        .team-card h3 { font-family: 'Playfair Display', serif; color: #e8dcc8; }
+        .team-card p { color: #8a7a6a; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0.3rem; }
+
+        /* Contact */
+        .contact { padding: 4rem; text-align: center; background: #1a1410; }
+        .contact h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #e8dcc8; margin-bottom: 1rem; }
+        .contact h2 span { color: #c9a84c; }
+        .contact p { color: #b5a58a; margin-bottom: 0.5rem; }
+        .contact a { color: #c9a84c; text-decoration: none; }
+        .contact .hours { margin-top: 1.5rem; font-size: 0.9rem; color: #8a7a6a; letter-spacing: 2px; }
+
+        footer { padding: 2rem; text-align: center; background: #100d0a; color: #5a4f40; font-size: 0.85rem; }
+
+        @media (max-width:768px){
+            .hero h1 { font-size: 3rem; }
+            .story { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+            .story-img img { height: 280px; }
+            .prices, .team, .contact { padding: 3rem 1.5rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .menu-board { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-ornament">✦ ✦ ✦</div>
+        <div class="hero-tag">Est. 1923 · Plymouth</div>
+        <h1>Speakeasy <span class="gold">Barbers</span></h1>
+        <p class="hero-sub">Where the old world meets a sharp edge. A gentleman's retreat beneath the streets of Plymouth.</p>
+        <div class="hero-divider"></div>
+        <p class="hero-address">3a Vauxhall Street · Barbican · Plymouth</p>
+        <div style="margin-top:2rem;"><a href="#prices" class="btn-vintage">View Our Menu</a></div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-text">
+            <div class="label">Our Story</div>
+            <h2>A Cut Above<br><span class="gold">Since the Jazz Age</span></h2>
+            <p>Behind an unmarked door on Vauxhall Street, Speakeasy Barbers has been Plymouth's best-kept secret for over a century. Our barbers are masters of the classic cut — straight razors, hot towels, and a whisky while you wait.</p>
+            <p>Step through the velvet curtain and leave the modern world behind.</p>
+        </div>
+        <div class="story-img">
+            <img src="https://images.unsplash.com/photo-1599351430140-5e3e0e0e0e0e?w=600&q=80" alt="Vintage barber interior" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="prices" id="prices">
+        <h2>The <span>Menu</span></h2>
+        <p class="prices-sub">Cuts & Grooming — Cash & Card Welcome</p>
+        <div class="menu-board">
+            <div class="menu-item"><span class="name">Gentleman's Cut</span><span class="price">£20</span></div>
+            <div class="menu-item"><span class="name">Hot Towel Shave</span><span class="price">£22</span></div>
+            <div class="menu-item"><span class="name">Beard Trim & Shape</span><span class="price">£14</span></div>
+            <div class="menu-item"><span class="name">Cut & Shave Combo</span><span class="price">£36</span></div>
+            <div class="menu-item"><span class="name">Skin Fade Premium</span><span class="price">£20</span></div>
+            <div class="menu-item"><span class="name">Head Shave (Razor)</span><span class="price">£16</span></div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Our <span>Barbers</span></h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Arthur" loading="lazy" />
+                <h3>Arthur Blackwood</h3>
+                <p>Master Barber · 32 yrs</p>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="James" loading="lazy" />
+                <h3>James Hartley</h3>
+                <p>Straight Razor Specialist</p>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Tom" loading="lazy" />
+                <h3>Tom Redcliff</h3>
+                <p>Classic Cuts & Fades</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Find <span>Us</span></h2>
+        <p>3a Vauxhall Street, Barbican, Plymouth, PL1 3AD</p>
+        <p>✆ <a href="tel:+441752789012">01752 789012</a></p>
+        <p>✉ <a href="mailto:speakeasybarbershopplymouth@gmail.com">speakeasybarbershopplymouth@gmail.com</a></p>
+        <p class="hours">Tue–Fri 9am–6pm · Sat 8am–5pm · Sun–Mon Closed</p>
+        <div style="margin-top:2rem;"><a href="#" class="btn-vintage">Book Appointment</a></div>
+    </section>
+
+    <footer>&copy; 2026 Speakeasy Barbers Plymouth · The best-kept secret on the Barbican.</footer>
+</body>
+</html>
